@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffe0ef">
+
+    <title>A Birthday Surprise For You ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="assets/song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================
+     PAGE 1: SECRET ENTRANCE
+========================== -->
+
+<section class="page active" id="page1">
+
+    <div class="container">
+
+        <div class="decoration">💗 ✨ 🦋</div>
+
+        <h1>Hey Birthday Girl! 💗</h1>
+
+        <p class="subtitle">
+            Welcome to your little surprise world!
+            But first, prove how well you know me.
+        </p>
+
+        <div class="lock-card">
+
+            <div class="lock-icon">🔐</div>
+
+            <h2>Secret Message 1</h2>
+
+            <p id="question1">
+                What is the name of our favourite place?
+            </p>
+
+            <input
+                type="text"
+                id="answer1"
+                placeholder="Enter your answer..."
+                autocomplete="off"
+            >
+
+            <button onclick="checkAnswer(1)">
+                Unlock Message 💌
+            </button>
+
+            <p id="message1" class="feedback"></p>
+
+        </div>
+
+        <div class="lock-card hidden" id="lock2">
+
+            <div class="lock-icon">🔒</div>
+
+            <h2>Secret Message 2</h2>
+
+            <p id="question2">
+                What is my favourite nickname for you?
+            </p>
+
+            <input
+                type="text"
+                id="answer2"
+                placeholder="Enter your answer..."
+                autocomplete="off"
+            >
+
+            <button onclick="checkAnswer(2)">
+                Unlock Final Message 💗
+            </button>
+
+            <p id="message2" class="feedback"></p>
+
+        </div>
+
+        <button
+            id="enterBtn"
+            class="hidden"
+            onclick="goToPage(2)"
+        >
+            Enter Your Birthday World 🎀
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 2: BIRTHDAY CELEBRATION
+========================== -->
+
+<section class="page" id="page2">
+
+    <div class="container">
+
+        <div class="decoration">🎀 💗 🎉</div>
+
+        <h1>HAPPY BIRTHDAY!! 🎂</h1>
+
+        <p class="subtitle">
+            To my favourite human, partner in crime
+            and forever best friend! ❤️
+        </p>
+
+        <div class="cake-area">
+
+            <div class="cake-scene" id="cakeScene">
+
+                <div class="cake-plate"></div>
+
+                <div class="real-cake" id="realCake">
+
+                    <div class="cake-topper">
+                        Happy Birthday
+                        <div class="strawberries">🍓 🍓 🍓</div>
+                    </div>
+
+                    <div class="cake-layer layer-top"></div>
+                    <div class="cake-layer layer-middle"></div>
+                    <div class="cake-layer layer-bottom"></div>
+
+                    <div class="cake-slice" id="cakeSlice">
+                        <span>🍓</span>
+                    </div>
+
+                </div>
+
+                <div class="cake-candles">
+
+                    <div class="real-candle">
+                        <div class="real-flame"></div>
+                    </div>
+
+                    <div class="real-candle">
+                        <div class="real-flame"></div>
+                    </div>
+
+                    <div class="real-candle">
+                        <div class="real-flame"></div>
+                    </div>
+
+                </div>
+
+                <div class="cake-knife" id="cakeKnife">🔪</div>
+
+            </div>
+
+        </div>
+
+        <p>Make a wish, birthday girl! 🕯️</p>
+
+        <div class="button-group">
+
+            <button onclick="blowCandles()">
+                💨 Blow Candles
+            </button>
+
+            <button onclick="cutCake()">
+                🍰 Cut Your Cake
+            </button>
+
+        </div>
+
+        <h2 id="birthdayWish" class="hidden">
+            May all your dreams come true! 💗
+        </h2>
+
+        <p id="cakeMessage" class="feedback"></p>
+
+        <button onclick="startMusic()">
+            🎵 Play Birthday Song
+        </button>
+
+        <button onclick="goToPage(3)">
+            Next: Our Memories 📸
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 3: OUR MEMORIES
+========================== -->
+
+<section class="page" id="page3">
+
+    <div class="container">
+
+        <div class="decoration">📸 💙 💗</div>
+
+        <h1>Our Little World</h1>
+
+        <p class="subtitle">
+            Some memories are too special to forget.
+            Here are a few of my favourites.
+        </p>
+
+        <div class="gallery">
+
+            <!-- MEMORY 1 -->
+
+            <div class="memory-card">
+
+                <img src="assets/photo1.jpg" alt="Our first memory">
+
+                <h3>Memory Number One ❤️</h3>
+
+                <p>One of my favourite moments.</p>
+
+                <audio class="memory-song">
+                    <source src="assets/memory1.mp3" type="audio/mpeg">
+                </audio>
+
+                <button onclick="playMemorySong(this)">
+                    ▶ Play Our Song
+                </button>
+
+            </div>
+
+
+            <!-- MEMORY 2 -->
+
+            <div class="memory-card">
+
+                <img src="assets/photo2.jpg" alt="Our memory">
+
+                <h3>That Unforgettable Day 🥹</h3>
+
+                <p>A moment worth remembering forever.</p>
+
+                <audio class="memory-song">
+                    <source src="assets/memory2.mp3" type="audio/mpeg">
+                </audio>
+
+                <button onclick="playMemorySong(this)">
+                    ▶ Play Our Song
+                </button>
+
+            </div>
+
+
+            <!-- MEMORY 3 -->
+
+            <div class="memory-card">
+
+                <img src="assets/photo3.jpg" alt="Her picture">
+
+                <h3>My Favourite Person 💗</h3>
+
+                <p>Never stop smiling like this.</p>
+
+                <audio class="memory-song">
+                    <source src="assets/memory3.mp3" type="audio/mpeg">
+                </audio>
+
+                <button onclick="playMemorySong(this)">
+                    ▶ Play Our Song
+                </button>
+
+            </div>
+
+
+            <!-- MEMORY 4 -->
+
+            <div class="memory-card">
+
+                <img src="assets/photo4.jpg" alt="Our memory">
+
+                <h3>Partners in Crime 😂</h3>
+
+                <p>More madness, more memories.</p>
+
+                <audio class="memory-song">
+                    <source src="assets/memory4.mp3" type="audio/mpeg">
+                </audio>
+
+                <button onclick="playMemorySong(this)">
+                    ▶ Play Our Song
+                </button>
+
+            </div>
+
+
+            <!-- MEMORY 5 -->
+
+            <div class="memory-card">
+
+                <img src="assets/photo5.jpg" alt="Special memory">
+
+                <h3>To Many More Memories 🫶</h3>
+
+                <p>This is just the beginning.</p>
+
+                <audio class="memory-song">
+                    <source src="assets/memory5.mp3" type="audio/mpeg">
+                </audio>
+
+                <button onclick="playMemorySong(this)">
+                    ▶ Play Our Song
+                </button>
+
+            </div>
+
+        </div>
+
+        <button onclick="goToPage(4)">
+            Next: A Message From Me 💌
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 4: VIDEO MESSAGE
+========================== -->
+
+<section class="page" id="page4">
+
+    <div class="container">
+
+        <div class="decoration">💌 🦋 💗</div>
+
+        <h1>A Little Message From Me</h1>
+
+        <p class="subtitle">
+            I could write a thousand words,
+            but I wanted you to hear them from me.
+        </p>
+
+        <div class="video-container">
+
+            <video controls playsinline poster="assets/photo1.jpg">
+
+                <source
+                    src="assets/birthday-video.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+        <h2>Always stay the crazy person you are! ❤️</h2>
+
+        <p>
+            No matter what happens, you will always
+            have a special place in my life.
+        </p>
+
+        <button onclick="goToPage(5)">
+            Final Surprise: Let's Play! 🎮
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 5: GAME ZONE
+========================== -->
+
+<section class="page" id="page5">
+
+    <div class="container">
+
+        <div class="decoration">🎮 💗 🎀</div>
+
+        <h1>Welcome to Our Fun Zone!</h1>
+
+        <p class="subtitle">
+            Two little games made especially for you.
+        </p>
+
+
+        <!-- GAME 1 -->
+
+        <div class="game-card">
+
+            <h2>Game 1: What Do You Feel? 💗</h2>
+
+            <p>
+                Choose your mood and interact with me!
+            </p>
+
+            <div class="mood-buttons">
+
+                <button onclick="chooseMood('angry')">
+                    😡 Beat Me
+                </button>
+
+                <button onclick="chooseMood('love')">
+                    😘 Kiss Me
+                </button>
+
+                <button onclick="chooseMood('peace')">
+                    🤗 Hug Me
+                </button>
+
+            </div>
+
+            <div id="moodResult" class="mood-result">
+                Choose your mood!
+            </div>
+
+            <div id="meEmoji" class="me-emoji">
+                🧑
+            </div>
+
+        </div>
+
+
+        <!-- GAME 2 -->
+
+        <div class="game-card">
+
+            <h2>Game 2: Catch My Love! ❤️</h2>
+
+            <p>
+                Catch falling hearts and chocolates
+                in your bucket!
+            </p>
+
+            <div class="game-info">
+                Score: <span id="score">0</span>
+            </div>
+
+            <div id="gameArea">
+
+                <div id="bucket">🪣</div>
+
+            </div>
+
+            <button onclick="startGame()">
+                Start Game 🎮
+            </button>
+
+            <p class="game-instructions">
+                Move your finger, mouse or use the arrow keys.
+                Catch as many as you can in 30 seconds!
+            </p>
+
+            <p id="gameMessage" class="feedback"></p>
+
+        </div>
+
+
+        <h2>Thank You For Being YOU! 💗</h2>
+
+        <p>
+            Best friends, partners in crime,
+            and a lifetime of memories to make.
+        </p>
+
+        <button onclick="goToPage(1)">
+            Back to Beginning ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

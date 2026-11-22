@@ -1,0 +1,822 @@
+
+/* ==========================================
+   1. GLOBAL DESIGN
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #f28fbd;
+    --dark-pink: #df5d9b;
+    --light-pink: #ffe0ef;
+    --blue: #8bb5ef;
+    --dark-blue: #718bd1;
+    --light-blue: #dceaff;
+    --white: #ffffff;
+    --text: #59465d;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    text-align: center;
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe0ef 0%,
+            #f5e7f9 45%,
+            #d9eaff 100%
+        );
+}
+
+.page {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: clamp(20px, 4vw, 55px) 15px;
+}
+
+.page.active {
+    display: block;
+    animation: pageAppear 0.7s ease;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h1 {
+    color: var(--dark-pink);
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    margin: 20px 0;
+}
+
+h2 {
+    color: var(--dark-blue);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin: 15px 0;
+}
+
+h3 {
+    color: var(--dark-pink);
+    margin: 15px 0 5px;
+}
+
+p {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+.subtitle {
+    color: #786b90;
+    margin-bottom: 30px;
+}
+
+.decoration {
+    font-size: 30px;
+    margin: 10px;
+    letter-spacing: 10px;
+}
+
+
+/* ==========================================
+   2. BUTTONS AND INPUTS
+========================================== */
+
+button {
+    display: inline-block;
+    max-width: 100%;
+    padding: 13px 24px;
+    margin: 10px 5px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(
+        90deg,
+        var(--pink),
+        var(--blue)
+    );
+
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 18px #cba4d5;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+input {
+    display: block;
+    width: 90%;
+    max-width: 350px;
+    min-height: 45px;
+
+    margin: 15px auto;
+    padding: 12px;
+
+    border: 2px solid #efb4d3;
+    border-radius: 15px;
+
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    background: #fffafd;
+}
+
+input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 10px #b9d3f8;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.feedback {
+    color: var(--dark-pink);
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   3. PAGE 1: SECRET LOCKS
+========================================== */
+
+.lock-card {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 25px;
+    margin: 25px auto;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border-radius: 25px;
+
+    box-shadow: 0 5px 20px #d6b6d8;
+
+    transition: 0.3s;
+}
+
+.lock-card:hover {
+    transform: translateY(-4px);
+}
+
+.lock-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   4. PAGE 2: BIRTHDAY CAKE
+========================================== */
+
+.cake-area {
+    width: 100%;
+    padding: 45px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.cake-scene {
+    width: min(100%, 420px);
+    height: 340px;
+    position: relative;
+    margin: auto;
+}
+
+/* Plate */
+
+.cake-plate {
+    position: absolute;
+    bottom: 12px;
+    left: 5%;
+
+    width: 90%;
+    height: 28px;
+
+    background: linear-gradient(
+        #ffffff,
+        #d5d5e8
+    );
+
+    border-radius: 50%;
+    box-shadow: 0 8px 15px #b9a3bd;
+}
+
+/* Cake body */
+
+.real-cake {
+    position: absolute;
+    bottom: 35px;
+    left: 15%;
+
+    width: 70%;
+    height: 220px;
+
+    transition: 0.8s;
+}
+
+.cake-layer {
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+
+    border-radius: 12px 12px 20px 20px;
+
+    background:
+        linear-gradient(
+            to right,
+            #d9799f,
+            #ffe2eb 25%,
+            #fff2f6 65%,
+            #d9799f
+        );
+
+    box-shadow:
+        inset 0 -8px 0 #e8a3bc,
+        0 5px 10px #bb8b9d;
+}
+
+.layer-bottom {
+    bottom: 0;
+    height: 85px;
+}
+
+.layer-middle {
+    bottom: 65px;
+    height: 80px;
+    width: 90%;
+    left: 5%;
+}
+
+.layer-top {
+    bottom: 125px;
+    height: 75px;
+    width: 78%;
+    left: 11%;
+}
+
+/* Frosted top */
+
+.cake-topper {
+    position: absolute;
+    bottom: 185px;
+    left: 11%;
+
+    width: 78%;
+    height: 35px;
+
+    border-radius: 50%;
+    background: linear-gradient(#fff, #fce0ee);
+
+    z-index: 3;
+
+    color: #df659e;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.strawberries {
+    position: absolute;
+    top: -24px;
+    width: 100%;
+    font-size: 20px;
+}
+
+/* Cake slice */
+
+.cake-slice {
+    position: absolute;
+    width: 35%;
+    height: 90px;
+    right: 0;
+    bottom: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #fff1f6,
+        #f5a9c7,
+        #fff5f8
+    );
+
+    border: 3px solid #e9a4bd;
+    border-radius: 10px;
+
+    opacity: 0;
+    z-index: 5;
+}
+
+.cake-slice span {
+    font-size: 22px;
+}
+
+/* Candles */
+
+.cake-candles {
+    position: absolute;
+    bottom: 252px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 25px;
+    z-index: 5;
+}
+
+.real-candle {
+    width: 12px;
+    height: 48px;
+
+    border-radius: 4px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 5px,
+        #ee85b3 5px,
+        #ee85b3 9px
+    );
+
+    position: relative;
+}
+
+.real-flame {
+    position: absolute;
+    width: 16px;
+    height: 23px;
+
+    top: -23px;
+    left: -2px;
+
+    background: radial-gradient(
+        circle at 50% 70%,
+        #fff7b2,
+        #ffbd3c 60%,
+        #ff793c
+    );
+
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+
+    animation: candleGlow 0.5s infinite alternate;
+
+    box-shadow: 0 0 15px #ffb33e;
+}
+
+@keyframes candleGlow {
+    from {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    to {
+        transform: rotate(-40deg) scale(1.15);
+    }
+}
+
+/* Knife */
+
+.cake-knife {
+    position: absolute;
+    top: 60px;
+    right: -10%;
+
+    font-size: 55px;
+    opacity: 0;
+    z-index: 10;
+
+    transform: rotate(-45deg);
+}
+
+/* Cutting animations */
+
+.cake-scene.blown .real-flame {
+    animation: none;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.cake-scene.cut .cake-knife {
+    animation: knifeCut 1.2s ease forwards;
+}
+
+.cake-scene.cut .cake-slice {
+    animation: sliceMove 1.5s 1s ease forwards;
+}
+
+.cake-scene.cut .real-cake {
+    animation: cakeShake 0.5s ease;
+}
+
+@keyframes knifeCut {
+    0% {
+        opacity: 0;
+        right: -10%;
+        top: 40px;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        right: 25%;
+        top: 180px;
+    }
+}
+
+@keyframes sliceMove {
+    0% {
+        opacity: 0;
+        transform: translateX(0) rotate(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(55px, -25px) rotate(10deg);
+    }
+}
+
+@keyframes cakeShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+
+/* ==========================================
+   5. PAGE 3: MEMORY GALLERY
+========================================== */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+
+    gap: 25px;
+    margin: 35px 0;
+}
+
+.memory-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: white;
+    padding: 13px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 15px #d5b6d5;
+
+    transition: 0.3s;
+}
+
+.memory-card:hover {
+    transform: rotate(-1deg) scale(1.03);
+}
+
+.memory-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.memory-card p {
+    color: #786b90;
+}
+
+.memory-card button {
+    width: 100%;
+    margin-top: auto;
+}
+
+.memory-card h3 {
+    font-size: 17px;
+}
+
+
+/* ==========================================
+   6. PAGE 4: VIDEO MESSAGE
+========================================== */
+
+.video-container {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 30px auto;
+    padding: 12px;
+
+    background: white;
+    border-radius: 20px;
+
+    box-shadow: 0 5px 20px #c9a9d7;
+}
+
+.video-container video {
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+
+    border-radius: 15px;
+}
+
+
+/* ==========================================
+   7. PAGE 5: GAMES
+========================================== */
+
+.game-card {
+    width: 100%;
+    max-width: 700px;
+
+    padding: 25px;
+    margin: 30px auto;
+
+    background: white;
+    border-radius: 25px;
+
+    box-shadow: 0 5px 20px #d5b6d5;
+}
+
+.mood-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mood-result {
+    min-height: 55px;
+
+    padding: 15px;
+    margin-top: 15px;
+
+    background: #ffe8f3;
+    border-radius: 15px;
+
+    color: #db5d9b;
+    font-weight: bold;
+}
+
+.me-emoji {
+    font-size: 75px;
+    margin: 15px;
+    transition: 0.2s;
+}
+
+
+/* ==========================================
+   8. CATCHING GAME
+========================================== */
+
+.game-info {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--dark-pink);
+    margin: 15px;
+}
+
+#gameArea {
+    width: 100%;
+    max-width: 550px;
+    height: 350px;
+
+    margin: 20px auto;
+
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        #dcecff,
+        #ffe3f1
+    );
+
+    border: 3px solid #efa7ca;
+    border-radius: 20px;
+
+    touch-action: none;
+}
+
+#bucket {
+    position: absolute;
+    bottom: 5px;
+    left: 45%;
+
+    width: 45px;
+    text-align: center;
+
+    font-size: 40px;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+.falling-item {
+    position: absolute;
+    top: 0;
+
+    font-size: 27px;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+.game-instructions {
+    font-size: 13px;
+    color: #8c7c9d;
+}
+
+
+/* ==========================================
+   9. RESPONSIVE DESIGN
+========================================== */
+
+/* All small devices */
+
+@media (max-width: 380px) {
+
+    .page {
+        padding: 15px 10px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    button {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+
+    .lock-card,
+    .game-card {
+        padding: 16px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .cake-scene {
+        transform: scale(0.85);
+        transform-origin: top center;
+        margin-bottom: -40px;
+    }
+
+    #gameArea {
+        height: 280px;
+    }
+
+}
+
+/* Normal phones */
+
+@media (min-width: 381px) and (max-width: 600px) {
+
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .memory-card {
+        padding: 9px;
+    }
+
+    .memory-card h3 {
+        font-size: 14px;
+    }
+
+    .memory-card p {
+        font-size: 12px;
+    }
+
+    #gameArea {
+        height: 300px;
+    }
+
+}
+
+/* Tablets */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .container {
+        max-width: 900px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* Laptops and desktops */
+
+@media (min-width: 1025px) {
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* Landscape phones */
+
+@media (
+    max-height: 500px
+) and (
+    orientation: landscape
+) {
+
+    .page {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .cake-area {
+        padding: 10px;
+    }
+
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+
+}
